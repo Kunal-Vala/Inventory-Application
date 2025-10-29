@@ -1,7 +1,16 @@
 const pool = require('./pool')
 
 async function readAllItems() {
-    const { rows } = await pool.query('SELECT * FROM item')
+    const { rows } = await pool.query(`SELECT 
+  item.id AS item_id,
+  item.name AS item_name,
+  item.description,
+  item.qty,
+  category.id AS category_id,
+  category.name AS category_name
+FROM item
+JOIN category ON item.category_id = category.id;
+`)
     return rows
 }
 
@@ -15,7 +24,16 @@ async function insertItem(item) {
     await pool.query(query, values);
 }
 
+
+async function readCategories() {
+  const query = 'SELECT * FROM category'
+  const {rows} = await pool.query(query)
+  
+  return rows
+}
+
 module.exports = {
     readAllItems,
     insertItem,
+    readCategories
 } 
