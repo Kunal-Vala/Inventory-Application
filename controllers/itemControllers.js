@@ -88,6 +88,30 @@ async function getEditItem(req, res) {
 }
 
 
+async function deleteItemById(req, res) {
+  const { id } = req.params;
+  const { admin_password } = req.body;
+
+  if (admin_password !== process.env.ADMIN_PASSWORD) {
+    return res.status(403).send("Unauthorized: Invalid admin password");
+  }
+
+  await db.deleteItem(id);
+  res.redirect('/items');
+}
+
+async function deleteCategoryById(req, res) {
+  const { id } = req.params;
+  const { admin_password } = req.body;
+
+  if (admin_password !== process.env.ADMIN_PASSWORD) {
+    return res.status(403).send("Unauthorized: Invalid admin password");
+  }
+
+  await db.deleteCategory(id);
+  res.redirect('/category');
+}
+
 module.exports = {
   getItem,
   getAllCategories,
