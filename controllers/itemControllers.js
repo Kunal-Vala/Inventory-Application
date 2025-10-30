@@ -17,6 +17,20 @@ async function getAllCategories(req, res) {
   });
 }
 
+async function postNewItem(req, res) {
+  const { item_name, item_description, category_id, item_qty } = req.body;
+
+  await db.insertItem({
+    name: item_name,
+    description: item_description,
+    category_id,
+    qty: item_qty
+  });
+
+  res.redirect('/items');
+}
+
+
 module.exports = {
   getItem,
   getAllCategories,
