@@ -57,6 +57,47 @@ async function insertCategory(category) {
 
 }
 
+async function updateItem(item) {
+  const updates = [];
+  const values = [];
+  let i = 1;
+
+  if (item.name) {
+    updates.push(`name = $${i++}`);
+    values.push(item.name);
+  }
+  if (item.description) {
+    updates.push(`description = $${i++}`);
+    values.push(item.description);
+  }
+  if (item.category_id) {
+    updates.push(`category_id = $${i++}`);
+    values.push(item.category_id);
+  }
+  if (item.qty) {
+    updates.push(`qty = $${i++}`);
+    values.push(item.qty);
+  }
+
+  if (updates.length === 0) {
+    console.log('No fields to update');
+    return;
+  }
+
+  const query = `
+    UPDATE item
+    SET ${updates.join(', ')}
+    WHERE id = $${i}
+  `;
+  values.push(parseInt(item.id));
+
+  try {
+    await pool.query(query, values);
+    console.log('Item updated successfully');
+  } catch (err) {
+    console.error('UPDATE FAILED:', err);
+  }
+}
 
 
 
@@ -67,5 +108,6 @@ module.exports = {
   insertItem,
   readCategories,
   readItemById,
-  insertCategory
+  insertCategory,
+  updateItem,
 } 
