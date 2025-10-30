@@ -99,6 +99,18 @@ async function updateItem(item) {
   }
 }
 
+async function deleteItem(id) {
+  const query = 'DELETE FROM item where id = ($1)'
+
+  await pool.query(query, [id])
+}
+
+
+async function deleteCategory(id) {
+  const query = 'DELETE FROM category where id = ($1)'
+
+  await pool.query(query, [id])
+}
 
 
 
@@ -110,4 +122,6 @@ module.exports = {
   readItemById,
   insertCategory,
   updateItem,
+  deleteCategory,
+  deleteItem,
 } 
