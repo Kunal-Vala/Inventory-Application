@@ -49,6 +49,45 @@ async function postNewCategory(req, res) {
 }
 
 
+async function updateItem(req, res) {
+  const { id } = req.params;
+  const { admin_password } = req.body;
+
+  if (admin_password !== process.env.ADMIN_PASSWORD) {
+    return res.status(403).send("Unauthorized: Invalid admin password");
+  }
+
+  const item = {
+    id,
+    name: req.body.item_name,
+    description: req.body.item_description,
+    category_id: req.body.category_id,
+    qty: req.body.item_qty
+  };
+
+  try {
+    await db.updateItem(item);
+    console.log(`Item ${id} updated`);
+    res.redirect('/items');
+  } catch (err) {
+    console.error(`Failed to update item ${id}:`, err);
+    res.status(500).send("Update failed");
+  }
+}
+
+async function getEditItem(req, res) {
+  const { id } = req.params;
+  const item = await db.readItemById(id);
+  const categoryData = await db.readCategories();
+
+  res.render('updateItem', {
+    title: "Edit Item",
+    item,
+    categoryData
+  });
+}
+
+
 module.exports = {
   getItem,
   getAllCategories,
