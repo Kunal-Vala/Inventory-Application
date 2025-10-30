@@ -44,9 +44,28 @@ async function readItemById(id) {
   return result.rows[0]
 }
 
+
+async function insertCategory(category) {
+  const query = 'INSERT INTO category (name) VALUES ($1)'
+
+  try {
+    await pool.query(query, [category]);
+    console.log('Category inserted successfully');
+  } catch (err) {
+    console.error('INSERTION FAILED:', err);
+  }
+
+}
+
+
+
+
+
+
 module.exports = {
   readAllItems,
   insertItem,
   readCategories,
-  readItemById
+  readItemById,
+  insertCategory
 } 
