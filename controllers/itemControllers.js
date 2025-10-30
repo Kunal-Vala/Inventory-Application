@@ -38,6 +38,16 @@ async function getNewItem(req, res) {
 }
 
 
+function getNewCategory(req, res) {
+  res.render('insertCategory');
+}
+
+async function postNewCategory(req, res) {
+  const { category } = req.body;
+  await db.insertCategory(category);
+  res.redirect('/items/insert');
+}
+
 
 module.exports = {
   getItem,
