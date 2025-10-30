@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+
+    <div>
+        <% itemList.forEach(element => { %>
+            <ul>
+
+                <li>Item ID: <%= element.item_id %></li>
+                <ul>
+                    <li>Item Name: <%= element.item_name %></li>
+                    <li>Description: <%= element.description %></li>
+                    <li>Qty: <%= element.qty %></li>
+                    <li>Category Name: <%= element.category_name %></li>
+                    <li>Category ID: <%= element.category_id %></li>
+                    <li>
+                        <a href="/items/<%= element.item_id %>/edit">Update</a>
+                    </li>
+                    
+                </ul>
+            </ul>
+                <% }) %>
+    </div>
+</body>
+</html>

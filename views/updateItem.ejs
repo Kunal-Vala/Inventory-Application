@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1><%= title %></h1>
+
+  <form id="updateForm" action="/items/<%= item.id %>?_method=PATCH" method="POST">
+    <input type="hidden" name="id" value="<%= item.id %>">
+
+    <label for="item_name">Item Name:</label>
+    <input type="text" name="item_name" id="item_name" value="<%= item.name %>" required maxlength="255">
+
+    <label for="item_description">Item Description</label>
+    <input type="text" name="item_description" id="item_description" value="<%= item.description %>">
+
+    <label for="category">Choose a Category</label>
+    <select name="category_id" id="category">
+      <% categoryData.forEach(category => { %>
+        <option value="<%= category.id %>" <%= category.id === item.category_id ? 'selected' : '' %>>
+          <%= category.name %>
+        </option>
+      <% }) %>
+    </select>
+
+    <label for="item_qty">Item Qty:</label>
+    <input type="tel" name="item_qty" id="item_qty" value="<%= item.qty %>">
+
+    <button type="button" onclick="openAdminModal('updateForm')">Update</button>
+  </form>
+
+  <form id="deleteForm" action="/items/<%= item.id %>?_method=DELETE" method="POST">
+    <button type="button" style="background-color: red;" onclick="openAdminModal('deleteForm')">Delete</button>
+  </form>
+
+  <%- include('partials/adminModal') %>
+</body>
+</html>

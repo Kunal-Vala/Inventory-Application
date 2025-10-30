@@ -1,0 +1,21 @@
+<form action="/items/insert" method="post">
+
+    <label for="item_name">Item Name:</label>
+    <input type="text" name="item_name" id="item_name" required maxlength="255">
+
+    <label for="item_description">Item Description</label>
+    <input type="text" name="item_description" id="item_description">
+    
+    <label for="category">Choose a Category</label>
+    <select name="category_id" id="category">
+        <% categoryData.forEach(category =>{ %>
+            <option value=<%- category.id %> ><%= category.name %></option>
+        <% }) %>
+    </select>
+
+    <label for="item_qty">Item Qty:</label>
+    <input type="tel" name="item_qty" id="item_qty">
+
+    
+    <button type="submit">Submit</button>
+</form>

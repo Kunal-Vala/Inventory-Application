@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+</head>
+
+<body>
+    <h1><%= title %></h1>
+
+    <div>
+        <% categoryList.forEach(element => { %>
+            <ul>
+                <li>
+                    <%= element.id %> : <%= element.name %>
+
+                    <!-- Delete Button -->
+                    <form id="deleteForm" action="/category/<%= element.id %>?_method=DELETE" method="POST">
+                        <button type="button" style="background-color: red; color: white;" onclick="openAdminModal('deleteForm')">Delete</button>
+                    </form>
+                </li>
+            </ul>
+        <% }) %>
+    </div>
+
+  <%- include('partials/adminModal') %>
+</body>
+</html>
