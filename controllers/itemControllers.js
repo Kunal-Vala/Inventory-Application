@@ -30,6 +30,14 @@ async function postNewItem(req, res) {
   res.redirect('/items');
 }
 
+async function getNewItem(req, res) {
+  const categoryData = await db.readCategories();
+  res.render('insertItem', {
+    categoryData
+  });
+}
+
+
 
 module.exports = {
   getItem,
