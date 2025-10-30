@@ -9,7 +9,13 @@ async function getItem(req, res) {
   });
 }
 
-
+async function getAllCategories(req, res) {
+  const categoryData = await db.readCategories();
+  res.render('category', {
+    title: "Category List",
+    categoryList: categoryData,
+  });
+}
 
 module.exports = {
   getItem,
