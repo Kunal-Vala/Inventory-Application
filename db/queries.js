@@ -17,8 +17,8 @@ JOIN category ON item.category_id = category.id;
 
 async function insertItem(item) {
   const query = `
-    INSERT INTO item (name, description, category_id, qty,price)
-    VALUES ($1, $2, $3, $4 $5)
+    INSERT INTO item (name, description, category_id, qty, price)
+    VALUES ($1, $2, $3, $4, $5)
   `;
   const values = [item.name, item.description, item.category_id, item.qty , item.price];
 

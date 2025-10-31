@@ -18,13 +18,14 @@ async function getAllCategories(req, res) {
 }
 
 async function postNewItem(req, res) {
-  const { item_name, item_description, category_id, item_qty } = req.body;
+  const { item_name, item_description, category_id, item_qty , item_price } = req.body;
 
   await db.insertItem({
     name: item_name,
     description: item_description,
     category_id,
-    qty: item_qty
+    qty: item_qty,
+    price : item_price
   });
 
   res.redirect('/items');
