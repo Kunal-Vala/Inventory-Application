@@ -62,7 +62,8 @@ async function updateItem(req, res) {
     name: req.body.item_name,
     description: req.body.item_description,
     category_id: req.body.category_id,
-    qty: req.body.item_qty
+    qty: req.body.item_qty,
+    price : req.body.item_price
   };
 
   try {
