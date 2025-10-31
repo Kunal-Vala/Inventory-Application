@@ -35,5 +35,84 @@
   </form>
 
   <%- include('partials/adminModal') %>
+  <style>
+    /* Base layout */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 2rem;
+  color: #333;
+}
+
+/* Page title */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+/* Form container */
+form {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Labels and inputs */
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #34495e;
+}
+
+input[type="text"],
+input[type="tel"],
+select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fdfdfd;
+}
+
+/* Buttons */
+button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="button"] {
+  background-color: #3498db;
+  color: white;
+}
+
+button[type="button"]:hover {
+  background-color: #2980b9;
+}
+
+/* Delete button override */
+#deleteForm button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+#deleteForm button:hover {
+  background-color: #c0392b;
+}
+  </style>
 </body>
 </html>
