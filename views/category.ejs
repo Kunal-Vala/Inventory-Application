@@ -5,6 +5,8 @@
 </head>
 
 <body>
+      <%- include('partials/navbar') %>
+
     <h1><%= title %></h1>
 
     <div>
@@ -82,6 +84,40 @@ form button {
 
 form button:hover {
   background-color: #c0392b;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3498db;
+  padding: 1rem 2rem;
+  color: white;
+  border-radius: 0 0 8px 8px;
+}
+
+.nav-brand a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #000000;
 }
   </style>
 </body>
