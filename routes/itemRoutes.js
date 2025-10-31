@@ -2,7 +2,7 @@ const { Router } = require('express')
 const itemRouter = Router()
 const itemController = require('../controllers/itemControllers')
 
-
+itemRouter.get('/',itemController.getIndexPage)
 itemRouter.get("/items",itemController.getItem)
 itemRouter.get("/category",itemController.getAllCategories)
 itemRouter.get('/items/insert',itemController.getNewItem)
