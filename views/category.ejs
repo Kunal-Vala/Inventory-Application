@@ -23,5 +23,66 @@
     </div>
 
   <%- include('partials/adminModal') %>
+  <style>
+    /* Base layout */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 2rem;
+  color: #333;
+}
+
+/* Page title */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+/* Category list container */
+div {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Category item block */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #34495e;
+}
+
+/* Delete button */
+form button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  background-color: #e74c3c;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #c0392b;
+}
+  </style>
 </body>
 </html>
