@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <title><%= title %></title>
@@ -25,5 +25,216 @@
             </ul>
                 <% }) %>
     </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <style>
+    /* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* Container layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  color: #2c3e50;
+}
+
+/* Filter section */
+.filter-container {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #eef;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-container label {
+  font-weight: bold;
+  color: #34495e;
+}
+
+.filter-container select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+/* Item blocks */
+#itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.item-block {
+  padding: 1rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.item-block ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.item-block li {
+  margin-bottom: 0.5rem;
+}
+
+.item-block a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.item-block a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3498db;
+  padding: 1rem 2rem;
+  color: white;
+  border-radius: 0 0 8px 8px;
+}
+
+.nav-brand a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #ecf0f1;
+}
+  </style>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+  <div class="container">
+    <header>
+      <h1><%= title %></h1>
+    </header>
+
+   <!-- Filter Dropdown -->
+<div class="filter-container">
+  <label for="categoryFilter">Filter by Category:</label>
+  <% const seenCategories = new Set(); %>
+  <select id="categoryFilter">
+    <option value="all">-- Show All --</option>
+    <% itemList.forEach(cat => {
+      if (!seenCategories.has(cat.category_id)) {
+        seenCategories.add(cat.category_id);
+    %>
+      <option value="<%= cat.category_id %>"><%= cat.category_name %></option>
+    <% 
+      }
+    }); 
+    %>
+  </select>
+</div>
+
+
+    <!-- Item List -->
+    <div id="itemList">
+      <% itemList.forEach(element => { %>
+        <div class="item-block" data-category-id="<%= element.category_id %>">
+          <ul>
+            <li><strong>Item ID:</strong> <%= element.item_id %></li>
+            <ul>
+              <li><strong>Name:</strong> <%= element.item_name %></li>
+              <li><strong>Description:</strong> <%= element.description %></li>
+              <li><strong>Qty:</strong> <%= element.qty %></li>
+              <li><strong>Category:</strong> <%= element.category_name %> (<%= element.category_id %>)</li>
+              <li><a href="/items/<%= element.item_id %>/edit">✏️ Update</a></li>
+            </ul>
+          </ul>
+        </div>
+      <% }) %>
+    </div>
+
+    <footer>
+      <p>&copy; <%= new Date().getFullYear() %> Inventory App by Kunal Vala</p>
+    </footer>
+  </div>
+
+  <!-- JavaScript Filtering Logic -->
+  <script>
+    const filterSelect = document.getElementById('categoryFilter');
+    const itemBlocks = document.querySelectorAll('.item-block');
+
+    filterSelect.addEventListener('change', () => {
+      const selected = filterSelect.value;
+      itemBlocks.forEach(block => {
+        const catId = block.getAttribute('data-category-id');
+        block.style.display = (selected === 'all' || selected === catId) ? 'block' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
