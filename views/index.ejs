@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory Management System</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📦 Inventory Management System</h1>
+      <p>
+        Welcome to your centralized hub for managing items and categories. 
+        Use the quick access buttons below to view, add, and organize your inventory efficiently.
+      </p>
+    </header>
+
+    <section class="navigation">
+      <h2>🔗 Quick Access</h2>
+      <div class="nav-links">
+        <a href="/items" class="nav-button">📋 View All Items</a>
+        <a href="/category" class="nav-button">📁 View All Categories</a>
+        <a href="/items/insert" class="nav-button">➕ Add New Item</a>
+        <a href="/category/insert" class="nav-button">➕ Add New Category</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; <%= new Date().getFullYear() %> Inventory App by Kunal Vala</p>
+    </footer>
+  </div>
+</body>
+<style>
+    /* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+/* Full viewport container */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Header section */
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Navigation section */
+.navigation {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.navigation h2 {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-bottom: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.nav-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #2980b9;
+}
+
+/* Footer section */
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #888;
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  margin-top: auto;
+}
+</style>
+</html>
