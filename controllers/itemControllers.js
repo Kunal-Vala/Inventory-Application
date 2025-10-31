@@ -112,6 +112,10 @@ async function deleteCategoryById(req, res) {
   res.redirect('/category');
 }
 
+function getIndexPage(req,res){
+  res.render('index')
+}
+
 module.exports = {
   getItem,
   getAllCategories,
@@ -122,5 +126,6 @@ module.exports = {
   updateItem,
   getEditItem,
   deleteItemById,
-  deleteCategoryById
+  deleteCategoryById,
+  getIndexPage
 };
